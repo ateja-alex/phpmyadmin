@@ -369,7 +369,7 @@ class AuthenticationCookie extends AuthenticationPlugin
 
         $value = $this->cookieDecrypt(
             $serverCookie,
-            $this->getSessionEncryptionSecret(),
+            $this->getEncryptionSecret(),
         );
         if ($value === null) {
             return false;
@@ -513,7 +513,7 @@ class AuthenticationCookie extends AuthenticationPlugin
             'pmaAuth-' . Current::$server,
             $this->cookieEncrypt(
                 (string) json_encode($payload),
-                $this->getSessionEncryptionSecret(),
+                $this->getEncryptionSecret(),
             ),
             null,
             $config->config->LoginCookieStore,
